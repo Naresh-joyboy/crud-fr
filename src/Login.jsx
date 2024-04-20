@@ -20,7 +20,7 @@ const Login = () => {
     }
     setError(validation)
     if(Object.keys(validation).length === 0){
-      axios.post("http://localhost:5001/login",{email,password})
+      axios.post("https://crud-ba.onrender.com/login",{email,password})
     .then(data=>{console.log(data);
       if(data.data.status == "ok"){
         alert("login successful")

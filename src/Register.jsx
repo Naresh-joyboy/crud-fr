@@ -20,7 +20,7 @@ const Register = () => {
 
 const handleSubmit =(e) =>{
     e.preventDefault();
-    axios.post("http://localhost:5001/register",{name,email,password})
+    axios.post("https://crud-ba.onrender.com/register",{name,email,password})
     .then(result=>{console.log(result);
       navigate("/login")
     }).catch(err=>console.log(err))
