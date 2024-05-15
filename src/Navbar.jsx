@@ -27,7 +27,7 @@ const Navbar = () => {
       <i className="fa fa-bars"></i>
     </button>
     <div className='container'>
-    <h2 style={{marginRight:"20px", color: "blue" }}> Pheniox</h2>
+    <h2 style={{marginRight:"20px", color: "blue" }}> To-do-list</h2>
 
     <ul className="navbar-nav ml-auto">
     
@@ -35,9 +35,7 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
       </li>
 
-      <li className="nav-li1">
-        <Link to={"/details"}>Add</Link>
-      </li>
+      
 
       <div className="topbar-divider d-none d-sm-block"></div>
       <div className='login-name'>{name}</div>

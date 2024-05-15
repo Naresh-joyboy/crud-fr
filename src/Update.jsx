@@ -3,35 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const Update = () => {
-    const [author, setAuthor] = useState("");
-    const [isbnno , setIsbnno] = useState("");
-    const [title , setTitle] = useState("");
-    const [date , setDate] = useState("");
-    const [had , setHad] = useState("");
+    const [task, setTask] = useState("");
+   
     const location = useLocation();
 
-    // Destructuring data from location.state and setting initial state
     useEffect(() => {
-        const { Author, ISBNNumber, Title, PublishDate, HadBuy } = location.state;
-        setAuthor(Author || "");
-        setIsbnno(ISBNNumber || "");
-        setTitle(Title || "");
-        setDate(PublishDate || "");
-        setHad(HadBuy || "");
+        const { Task } = location.state;
+        setTask(Task || "");
+        
     }, [location]);
 
     const handleSubmit = async () => {
         try {
-            const result = await axios.post("https://crud-ba.onrender.com/edituser", { 
+            const result = await axios.post("http://127.0.0.1:5001/edittask", { 
                 id: location.state._id,
-                author,
-                isbnno,
-                title,
-                date,
-                had
+                task
             });
             console.log(result, "edit ok");
-            window.location.href="/"; // Redirect to home page after successful update
+            window.location.href="/"; 
         } catch (error) {
             console.error("Error update user:", error);
             alert("An error occurred while updating user");
@@ -43,57 +32,22 @@ const Update = () => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-4">
-                        <label>Author</label>
+                        <label>Task Name</label>
                         <input
                             type="text"
-                            value={author}
+                            value={task}
                             placeholder="Enter Author Name"
                             className="form-control"
-                            onChange={(e) => setAuthor(e.target.value)}
+                            onChange={(e) => setTask(e.target.value)}
                         />
                     </div>
-                    <div className="col-lg-4">
-                        <label>ISBNNumber</label>
-                        <input
-                            type="text"
-                            value={isbnno}
-                            className="form-control"
-                            onChange={(e) => setIsbnno(e.target.value)}
-                        />
-                    </div>
-                    <div className="col-lg-6">
-                        <label>Title</label>
-                        <input
-                            type="text"
-                            value={title}
-                            className="form-control"
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </div>
-                    <div className="col-lg-4">
-                        <label>PublishDate</label>
-                        <input
-                            type="Date"
-                            value={date}
-                            className="form-control"
-                            onChange={(e) => setDate(e.target.value)}
-                        />
-                    </div>
-                    <div className="col-lg-4">
-                        <label>Had / Should Buy</label>
-                        <input
-                            type="text"
-                            value={had}
-                            className="form-control"
-                            onChange={(e) => setHad(e.target.value)}
-                        />
-                    </div>
+                   
                     <div className="col-lg-12 mt-4">
                         <input
-                            type="button" // Change type to button
+                            type="button" 
                             onClick={handleSubmit}
                             className="btn btn-primary"
-                            value="update" // Remove unnecessary curly braces
+                            value="update" 
                         />
                     </div>
                 </div>

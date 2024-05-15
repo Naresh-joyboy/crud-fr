@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
-// import app from './Firebase-auth';
 import axios from 'axios';
-// import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { Link , useNavigate } from 'react-router-dom'
 
 
@@ -10,20 +8,17 @@ const Register = () => {
   const [name ,setName] =useState('');
   const [email ,setEmail] =useState('');
   const [password ,setPassword] =useState('');
-  // const [mobile ,setMobile] =useState('');
-  // const [otp ,setOtp] =useState('');
-  // const [verifyButton ,setVerifyButton] =useState(false);
-  // const [verifyOtp ,setVerifyOtp] =useState(false);
+  
   const navigate =useNavigate()
  
 
 
 const handleSubmit =(e) =>{
     e.preventDefault();
-    axios.post("https://crud-ba.onrender.com/register",{name,email,password})
+    axios.post("http://127.0.0.1:5001/register",{name,email,password})
     .then(result=>{console.log(result);
       navigate("/login")
-    }).catch(err=>console.log(err))
+    }).catch(err=>console.log('ddd',err))
     
   }
 
@@ -46,7 +41,7 @@ const handleSubmit =(e) =>{
       </div>
       <hr/>
       <div>
-      <Link to={""}>Forget password?</Link>
+     
       <br/>
       <Link to={"/"}>Have an account</Link>
       </div>
