@@ -35,10 +35,6 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
       </li>
 
-      <li className="nav-li1">
-        <Link to={"/details"}>Add</Link>
-      </li>
-
       <div className="topbar-divider d-none d-sm-block"></div>
       <div className='login-name'>{name}</div>
       {login?

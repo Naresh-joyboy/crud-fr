@@ -50,13 +50,11 @@
 /* ---------------navbar------ */
 .container{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.navbar-nav{
-    
-   
-}
+
 .nav-li1{
     margin: 5px;
     margin-right: 15 px;
@@ -76,4 +74,26 @@
 .login-name{
     margin: 5px;
     margin-right: 15px;
+}
+
+/* forgot-form */
+
+.forgotpass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color:rgb(2, 1, 1) ;
+    border-radius: 10px;
+    border-width: 5px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+}
+.forgotbut{
+    padding: 20px;
 }
