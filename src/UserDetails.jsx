@@ -15,7 +15,7 @@ const UserDetails = () => {
         token: window.localStorage.getItem("token"),
       })
       .then((result) => {
-        console.log("hi");
+        console.log("hi ther");
         {
           login ? setData(result.data.data) : setData("");
         }
