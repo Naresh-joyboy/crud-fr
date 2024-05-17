@@ -53,7 +53,7 @@ const Login = () => {
       </div>
       <hr/>
       <div>
-      
+      <Link to={""}>Forget password</Link>
       <br/>
       <Link to={"/register"}>Create account</Link>
       </div> 

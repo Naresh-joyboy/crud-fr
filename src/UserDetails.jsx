@@ -11,11 +11,11 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .post("http://127.0.0.1:5001/data", {
+      .post("https://crud-ba.onrender.com/data", {
         token: window.localStorage.getItem("token"),
       })
       .then((result) => {
-        console.log("hi ther");
+        console.log("hi");
         {
           login ? setData(result.data.data) : setData("");
         }
@@ -26,7 +26,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5001/reciev")
+      .get("https://crud-ba.onrender.com/reciev")
       .then((result) => {
         {
           login ? setInfo(result.data) : setInfo([]);
@@ -36,14 +36,14 @@ const UserDetails = () => {
   }, []);
 
   const handleDelete = (item) => {
-    const { Task, _id } = item;
-    if (window.confirm(`Are you sure you want to delete ${Task}?`)) {
+    const { Author, _id } = item;
+    if (window.confirm(`Are you sure you want to delete ${Author}?`)) {
       axios
-        .post("http://127.0.0.1:5001/deletetask", { taskid: _id })
+        .post("https://crud-ba.onrender.com/deleteuser", { userid: _id })
         .then((result) => {
           alert(
             result.data.status === "ok"
-              ? "Task deleted successfully"
+              ? "User deleted successfully"
               : "Failed to delete user"
           );
           window.location.reload();
@@ -60,7 +60,7 @@ const UserDetails = () => {
   return (
     <div>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-0 text-gray-800">Table for Task</h1>
+        <h1 className="h3 mb-0 text-gray-800">Table for book</h1>
         <Link
           to="/details"
           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
@@ -71,7 +71,7 @@ const UserDetails = () => {
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">
-            DataTables 
+            DataTables Example
           </h6>
         </div>
         <div className="card-body">
@@ -84,21 +84,27 @@ const UserDetails = () => {
             >
               <thead>
                 <tr>
-                  <th>Task</th>
-                  
+                  <th>Author</th>
+                  <th>ISBN Number</th>
+                  <th>Title</th>
+                  <th>Publish Date</th>
+                  <th>Had / Should Buy</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              {info.map((detail, index) => (
+              {info.map((detai, index) => (
                 <tbody key={index}>
                   <tr>
-                    <td>{detail.Task}</td>
-                    
+                    <td>{detai.Author}</td>
+                    <td>{detai.ISBNNumber}</td>
+                    <td>{detai.Title}</td>
+                    <td>{detai.PublishDate}</td>
+                    <td>{detai.HadBuy}</td>
                     <td>
                       <button
                         className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                         onClick={() => 
-                          {navigate("/update",{state:detail})}
+                          {navigate("/update",{state:detai})}
                         }
                       >
                         Edit
@@ -108,7 +114,7 @@ const UserDetails = () => {
                         href="#"
                         className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"
                         onClick={() => {
-                          handleDelete(detail);
+                          handleDelete(detai);
                         }}
                       >
                         <i className="fas fa-download fa-sm text-white-50"></i>{" "}
