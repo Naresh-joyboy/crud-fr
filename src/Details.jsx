@@ -3,8 +3,11 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Details = () => {
-const [task,setTask] = useState('')
-
+const [author,setAuthor] = useState('')
+const [isbnno,setIsbnno] = useState('')
+const [title,setTitle] = useState('')
+const [date,setDate] = useState('')
+const [had,setHad] = useState('')
 const usermail = localStorage.getItem("mail")
 const email =usermail
 const navigate = useNavigate()
@@ -12,8 +15,12 @@ const login = localStorage.getItem("loggedIn")
 
     const handleSubmit =()=>{
       if(login){
-        axios.post("http://127.0.0.1:5001/addtask",{
-            Task:task,
+        axios.post("https://crud-ba.onrender.com/details",{
+            Author: author,
+            ISBNNumber: isbnno,
+            Title: title,
+            PublishDate: date,
+            HadBuy: had,
             email:email
         }).then((result)=>(console.log(result)))
         navigate("/")
@@ -27,16 +34,51 @@ const login = localStorage.getItem("loggedIn")
     <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4">
-              <label>Task</label>
+              <label>Author</label>
               <input
                 type="text"
                 
-                placeholder="Enter Task Name"
+                placeholder="Enter Author Name"
                 className="form-control"
-                onChange={(e)=>{setTask(e.target.value)}}
+                onChange={(e)=>{setAuthor(e.target.value)}}
               />
             </div>
-           
+            <div className="col-lg-4">
+              <label>ISBNNumber</label>
+              <input
+                type="text"
+                
+                className="form-control"
+                onChange={(e)=>{setIsbnno(e.target.value)}}
+              />
+            </div>
+            <div className="col-lg-6">
+              <label>Title</label>
+              <input
+                type="text"
+                
+                className="form-control"
+                onChange={(e)=>{setTitle(e.target.value)}}
+              />
+            </div>
+            <div className="col-lg-4">
+              <label>PublishDate</label>
+              <input
+                type="Date"
+                
+                className="form-control"
+                onChange={(e)=>{setDate(e.target.value)}}
+              />
+            </div>
+            <div className="col-lg-4">
+              <label>Had / Should Buy</label>
+              <input
+                type="text"
+                
+                className="form-control"
+                onChange={(e)=>{setHad(e.target.value)}}
+              />
+            </div>
             <div className="col-lg-12 mt-4">
               <input
                 type="submit"
