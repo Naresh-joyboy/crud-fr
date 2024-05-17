@@ -22,7 +22,7 @@ const Update = () => {
 
     const handleSubmit = async () => {
         try {
-            const result = await axios.post("https://crud-ba.onrender.com/edituser", { 
+            const result = await axios.post("http://localhost:5001/edituser", { 
                 id: location.state._id,
                 author,
                 isbnno,

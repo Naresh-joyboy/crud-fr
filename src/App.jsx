@@ -7,8 +7,9 @@ import UserDetails from './UserDetails'
 import Navbar from './Navbar'
 import Details from './Details'
 import Shownavbar from './Shownavbar'
-import { useState } from 'react'
 import Update from './Update'
+import Forgotp from './Forgotp'
+import Resetpassword from './Resetpassword'
 
 function App() {
   const logIn =localStorage.getItem("loggedIn")
@@ -25,6 +26,8 @@ function App() {
      <Route path='/' element={<UserDetails />}/>
      <Route path='/details' element={<Details />}/>
      <Route path='/update' element={<Update/>}/>
+     <Route path='/forgotpass' element={<Forgotp/>}/>
+     <Route path='/resetpassword' element={<Resetpassword/>}/>
     </Routes>
     </BrowserRouter>
   )

@@ -11,11 +11,10 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .post("https://crud-ba.onrender.com/data", {
+      .post("http://localhost:5001/data", {
         token: window.localStorage.getItem("token"),
       })
       .then((result) => {
-        console.log("hi");
         {
           login ? setData(result.data.data) : setData("");
         }
@@ -26,7 +25,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .get("https://crud-ba.onrender.com/reciev")
+      .get("http://localhost:5001/reciev")
       .then((result) => {
         {
           login ? setInfo(result.data) : setInfo([]);
@@ -36,10 +35,11 @@ const UserDetails = () => {
   }, []);
 
   const handleDelete = (item) => {
-    const { Author, _id } = item;
+   
+    const { Author, _id , image} = item;
     if (window.confirm(`Are you sure you want to delete ${Author}?`)) {
       axios
-        .post("https://crud-ba.onrender.com/deleteuser", { userid: _id })
+        .post("http://localhost:5001/deleteuser", { userid: _id , image: image.public_id})
         .then((result) => {
           alert(
             result.data.status === "ok"
@@ -64,6 +64,7 @@ const UserDetails = () => {
         <Link
           to="/details"
           className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+          style={{marginRight:"30px"}}
         >
           <i className="fas fa-download fa-sm text-white-50"></i> Generate
         </Link>
@@ -80,7 +81,7 @@ const UserDetails = () => {
               className="table table-bordered"
               id="dataTable"
               width="100%"
-              cellspacing="0"
+              
             >
               <thead>
                 <tr>
@@ -89,6 +90,7 @@ const UserDetails = () => {
                   <th>Title</th>
                   <th>Publish Date</th>
                   <th>Had / Should Buy</th>
+                  <th>image</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -100,6 +102,7 @@ const UserDetails = () => {
                     <td>{detai.Title}</td>
                     <td>{detai.PublishDate}</td>
                     <td>{detai.HadBuy}</td>
+                    <td><img style={{width:"50px" ,height:"50px" }}src={detai.image.url}/></td>
                     <td>
                       <button
                         className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
@@ -133,3 +136,4 @@ const UserDetails = () => {
 };
 
 export default UserDetails;
+// https://crud-ba.onrender.com/data

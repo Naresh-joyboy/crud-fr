@@ -20,7 +20,7 @@ const Register = () => {
 
 const handleSubmit =(e) =>{
     e.preventDefault();
-    axios.post("https://crud-ba.onrender.com/register",{name,email,password})
+    axios.post("http://localhost:5001/register",{name,email,password})
     .then(result=>{console.log(result);
       navigate("/login")
     }).catch(err=>console.log(err))
@@ -48,7 +48,7 @@ const handleSubmit =(e) =>{
       <div>
       <Link to={""}>Forget password?</Link>
       <br/>
-      <Link to={"/"}>Have an account</Link>
+      <Link to={"/login"}>Have an account</Link>
       </div>
       
     </div>

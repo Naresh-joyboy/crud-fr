@@ -12,6 +12,10 @@ const Shownavbar = ({children}) => {
             setShowNav(false)
         }else if(location.pathname === "/register"){
             setShowNav(false)
+        }else if(location.pathname === "/forgotpass"){
+            setShowNav(false)
+        }else if(location.pathname === "/reset-password"){
+            setShowNav(false)
         }else{
             setShowNav(true)
         }
