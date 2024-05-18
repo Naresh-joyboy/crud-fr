@@ -11,7 +11,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5001/data", {
+      .post("https://crud-ba.onrender.com/data", {
         token: window.localStorage.getItem("token"),
       })
       .then((result) => {
@@ -25,7 +25,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/reciev")
+      .get("https://crud-ba.onrender.com/reciev")
       .then((result) => {
         {
           login ? setInfo(result.data) : setInfo([]);
@@ -34,12 +34,13 @@ const UserDetails = () => {
       .catch((err) => console.log(err, "someerror"));
   }, []);
 
+ console.log(info,);
   const handleDelete = (item) => {
    
     const { Author, _id , image} = item;
     if (window.confirm(`Are you sure you want to delete ${Author}?`)) {
       axios
-        .post("http://localhost:5001/deleteuser", { userid: _id , image: image.public_id})
+        .post("https://crud-ba.onrender.com/deleteuser", { userid: _id , image: image.public_id})
         .then((result) => {
           alert(
             result.data.status === "ok"

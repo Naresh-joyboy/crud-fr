@@ -13,7 +13,7 @@ const Forgotp = () => {
     setOttp(ot)
     console.log(ot);
     e.preventDefault();
-     axios.post("http://localhost:5001/forgotpass",{email,ot})
+     axios.post("https://crud-ba.onrender.com/forgotpass",{email,ot})
     .then(result=>{console.log(result,"podu");
     alert(result.data.status)
     navigate("/login")

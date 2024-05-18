@@ -21,7 +21,7 @@ const login = localStorage.getItem("loggedIn")
       reader.readAsDataURL(image);
       reader.onloadend = async () => {
         try {
-          const result = await axios.post("http://localhost:5001/details", {
+          const result = await axios.post("https://crud-ba.onrender.com/details", {
             image: reader.result,
             author,
             isbnno,
