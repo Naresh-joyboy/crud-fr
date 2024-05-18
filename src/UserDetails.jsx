@@ -34,7 +34,7 @@ const UserDetails = () => {
       .catch((err) => console.log(err, "someerror"));
   }, []);
 
- console.log(info,"jui");
+ console.log(info,);
   const handleDelete = (item) => {
    
     const { Author, _id , image} = item;
@@ -103,7 +103,7 @@ const UserDetails = () => {
                     <td>{detai.Title}</td>
                     <td>{detai.PublishDate}</td>
                     <td>{detai.HadBuy}</td>
-                    <td><img style={{width:"50px" ,height:"50px" }}src={detai.image}/></td>
+                    <td><img style={{width:"50px" ,height:"50px" }}src={detai.image.url}/></td>
                     <td>
                       <button
                         className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
